@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: mailparse
+spec:
+  selector:
+    app: mailparse
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80

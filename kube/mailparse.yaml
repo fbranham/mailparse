@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mailparse
+  labels:
+    app: mailparse
+spec:
+  ports:
+  - name: "80"
+    port: 80
+    targetPort: 80
+  selector:
+    name: mailparse
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mailparse
+  template:
+    metadata:
+      labels:
+        app: mailparse
+    spec:
+      containers:
+      - name: mailparse
+        image: mailparse:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 80
